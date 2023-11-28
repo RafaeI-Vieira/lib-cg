@@ -19,6 +19,18 @@ public class LivroDTO {
         this.descricao = descricao;
         this.emprestado = emprestado;
     }
+    public LivroDTO(int id, String titulo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = null; 
+        this.emprestado = null; 
+    }
+    public LivroDTO(Integer id, String novoTitulo, String novaDescricao) {
+        this.id = id;
+        this.titulo = novoTitulo;
+        this.descricao = novaDescricao;
+        this.emprestado = true; // Você pode definir o emprestado como desejar
+    }
 
     public Integer getId() {
         return id;

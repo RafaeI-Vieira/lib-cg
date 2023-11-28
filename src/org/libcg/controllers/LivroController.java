@@ -55,6 +55,20 @@ public class LivroController extends Controller {
         
         livro.save();
     }
+    public void atualizarNomeLivro(LivroDTO livroDTO) {
+        // Encontra o livro pelo ID
+        Livro livro = Livro.findOne(livroDTO.getId(), Livro.class);
+
+    if (livro != null) {
+        livro.setTitulo(livroDTO.getTitulo());
+        livro.setDescricao(livroDTO.getDescricao());
+
+        livro.save();
+    } else {
+        System.out.println("Livro não encontrado para atualização.");
+    }
+    }
+    
     
     public void cadastrar() {
         CadastraLivroScreen view = new CadastraLivroScreen();
