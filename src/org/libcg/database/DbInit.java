@@ -1,5 +1,10 @@
 package org.libcg.database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class DbInit {
     public static String[] run() {
         String[] queries = {
@@ -9,7 +14,18 @@ public class DbInit {
             "INSERT INTO Livro(titulo, descricao) VALUES('O Pequeno Principe', 'Eh uma novela do escritor, aviador aristocrata frances Antoine de Saint-Exupery')",
             "INSERT INTO Livro(titulo, descricao) VALUES('Romeu e Julieta', 'Eh uma novela do escritor, aviador aristocrata frances Antoine de Saint-Exupery')",
         };
-        
+
+        try (Connection connection = DriverManager.getConnection("jdbc:h2:~/lib_db")) {
+            for (String query : queries) {
+                try (PreparedStatement statement = connection.prepareStatement(query)) {
+                    statement.executeUpdate();
+                }
+            }
+            System.out.println("Banco de dados inicializado com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return queries;
     }
 }

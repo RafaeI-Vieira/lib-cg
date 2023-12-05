@@ -1,5 +1,6 @@
 package org.libcg.controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 import org.libcg.core.Controller;
 import org.libcg.dto.LivroDTO;
@@ -59,14 +60,14 @@ public class LivroController extends Controller {
         // Encontra o livro pelo ID
         Livro livro = Livro.findOne(livroDTO.getId(), Livro.class);
 
-    if (livro != null) {
-        livro.setTitulo(livroDTO.getTitulo());
-        livro.setDescricao(livroDTO.getDescricao());
+        if (livro != null) {
+            livro.setTitulo(livroDTO.getTitulo());
+            livro.setDescricao(livroDTO.getDescricao());
 
-        livro.save();
-    } else {
-        System.out.println("Livro não encontrado para atualização.");
-    }
+            livro.save();
+        } else {
+            System.out.println("Livro não encontrado para atualização.");
+        }
     }
     
     
@@ -81,4 +82,17 @@ public class LivroController extends Controller {
         
         livro.save();
     }
+
+    public void excluirLivro(int codigoLivroExcluir) throws SQLException {
+        Livro livro = Livro.findOne(codigoLivroExcluir, Livro.class);
+
+        if (livro != null) {
+            livro.delete();
+            System.out.println("Livro excluído com sucesso!");
+        } else {
+            System.out.println("Livro não encontrado para exclusão.");
+        }
+
+    }
+
 }

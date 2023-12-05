@@ -10,6 +10,7 @@ public class MenuPrincipalScreen extends View {
         System.out.println("Bem vindo a loja virtual da Biblioteca CG!");
         System.out.println("Digite 1 para acessar a área de livros.");
         System.out.println("Digite 2 para atualizar o nome de um livro.");
+        System.out.println("Digite 3 para deletar o livro.");
         System.out.println("Digite 0 para sair.");
         System.out.println("=====================================");
         System.out.print("> ");
@@ -25,7 +26,19 @@ public class MenuPrincipalScreen extends View {
                 // Ou, se desejar chamar apenas o método de atualizar nome:
                 // atualizaNome.atualizarNomeLivro(id, novoTitulo);
             }
-            default -> System.out.println("Saindo...");
+            case 3 ->  {
+                System.out.println("Digite o ID do livro que deseja excluir: ");
+                int id = this.scanner.nextInt();
+                try {
+                    livroController.excluirLivro(id);
+                } catch (Exception e) {
+                    System.out.println("Erro ao excluir livro: " + e.getMessage());
+                }
+            }
+
+            default -> {
+                System.out.println("Saindo...");
+            }
         }
     }
 }
