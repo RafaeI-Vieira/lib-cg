@@ -53,9 +53,15 @@ public class LivroController extends Controller {
     
     public void emprestar(LivroDTO livroDTO) {
         Livro livro = Livro.findOne(livroDTO.getId(), Livro.class);
-        
+
+        System.out.println("Livro emprestado: " + livro.getTitulo());
+        if (livro.getAutor() == null){
+            System.out.println("Autor do livro: Desconhecido\n");
+        }else{
+            System.out.println("Autor do livro: " + livro.getAutor() + "\n");
+        }
+
         livro.emprestar();
-        
         livro.save();
     }
     public void atualizarNomeLivro(LivroDTO livroDTO) {
