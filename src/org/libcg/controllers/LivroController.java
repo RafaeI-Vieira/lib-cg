@@ -26,7 +26,8 @@ public class LivroController extends Controller {
                 .map(livro -> new LivroDTO(
                         livro.getId(), 
                         livro.getTitulo(), 
-                        livro.getDescricao(), 
+                        livro.getDescricao(),
+                        livro.getAutor(),
                         livro.estaEmprestado()
                 )).toList();
         
@@ -40,7 +41,8 @@ public class LivroController extends Controller {
         LivroDTO livroDTO = new LivroDTO(
                         livro.getId(), 
                         livro.getTitulo(), 
-                        livro.getDescricao(), 
+                        livro.getDescricao(),
+                        livro.getAutor(),
                         livro.estaEmprestado()
         );
         
@@ -63,6 +65,7 @@ public class LivroController extends Controller {
         if (livro != null) {
             livro.setTitulo(livroDTO.getTitulo());
             livro.setDescricao(livroDTO.getDescricao());
+            livro.setAutor(livroDTO.getAutor());
 
             livro.save();
         } else {
@@ -78,7 +81,7 @@ public class LivroController extends Controller {
     }
     
     public void guardar(LivroDTO livroDTO) {
-        Livro livro = new Livro(livroDTO.getTitulo(), livroDTO.getDescricao());
+        Livro livro = new Livro(livroDTO.getTitulo(), livroDTO.getDescricao(), livroDTO.getAutor());
         
         livro.save();
     }

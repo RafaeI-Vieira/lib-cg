@@ -11,14 +11,17 @@ public class Livro extends Model<Livro> {
     private Integer id;
     private String titulo;
     private String descricao;
+
+    private String autor;
     private Boolean emprestado;
     
     public Livro() { super(); }
-    public Livro(String titulo, String descricao) {
+    public Livro(String titulo, String descricao, String autor) {
         super();
         
         this.titulo = titulo;
         this.descricao = descricao;
+        this.autor = autor;
         this.emprestado = false;
     }
     
@@ -57,7 +60,15 @@ public class Livro extends Model<Livro> {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
     public void delete() throws SQLException {
         if (id != null) {
             try (Connection connection = DriverManager.getConnection("jdbc:h2:~/lib_db")) {

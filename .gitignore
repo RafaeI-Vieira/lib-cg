@@ -1,2 +1,6 @@
+# Ignorando arquivos
 dist
 build
+out/
+.idea/
+lib-cg.iml

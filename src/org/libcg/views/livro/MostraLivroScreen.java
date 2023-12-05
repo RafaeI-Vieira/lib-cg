@@ -15,6 +15,11 @@ public class MostraLivroScreen extends View {
     public void render() {
         System.out.println("Codigo: " + livro.getId() + " " + livro.getTitulo());
         System.out.println("Descricao: " + livro.getDescricao());
+        if (livro.getAutor() == null){
+            System.out.println("Autor: Desconhecido");
+        }else{
+            System.out.println("Autor: " + livro.getAutor());
+        }
         System.out.println("=====================================");
         System.out.println("Digite 1 para emprestar e 0 para voltar");
         System.out.println("=====================================");

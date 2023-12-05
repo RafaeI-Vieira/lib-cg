@@ -24,8 +24,11 @@ public class AtualizaNomeLivroScreen extends View {
     
         System.out.print("Digite a nova descrição do livro: ");
         String novaDescricao = this.scanner.nextLine();
+
+        System.out.print("Digite o novo autor do livro: ");
+        String novoAutor = this.scanner.nextLine();
     
-        LivroDTO livro = new LivroDTO(id, novoTitulo, novaDescricao);
+        LivroDTO livro = new LivroDTO(id, novoTitulo, novaDescricao, novoAutor);
     
         LivroController livroController = this.app.make(LivroController.class);
         livroController.atualizarNomeLivro(livro);
