@@ -32,8 +32,4 @@ public class AtualizaNomeLivroScreen extends View {
         livroController.principal();
     }
 
-    public static void main(String[] args) {
-        AtualizaNomeLivroScreen atualizaNome = new AtualizaNomeLivroScreen();
-        atualizaNome.render();
-    }
 }

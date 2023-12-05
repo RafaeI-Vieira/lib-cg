@@ -34,6 +34,7 @@ public class MenuPrincipalScreen extends View {
                 } catch (Exception e) {
                     System.out.println("Erro ao excluir livro: " + e.getMessage());
                 }
+                this.render();
             }
 
             default -> {
